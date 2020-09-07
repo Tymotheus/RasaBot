@@ -1,33 +1,48 @@
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
+  #- affirm
+  #- deny
   - thanks
   - inform
+  - answer_correct
+  - answer_incorrect
   - out_of_scope
+  - answer
 
 actions:
 - utter_noworries
 - utter_greet
 - utter_goodbye
 - utter_default_trivia
-- give_trivia
 - utter_ask_type
+- give_trivia
+- give_type
+- button_test
+- answer_correct_react
+- answer_incorrect_react
+- verify_answer
 
 entities:
   - trivia_type
+  - correct_answer
+  - user_answer
+  - points
 
 slots:
   trivia_type:
-    type: categorical
-    values:
-      - random
-      - general
-      - books
-      - geography
+    type: text
     initial_value: "random"
 
+  correct_answer:
+    type: text
+
+  user_answer:
+    type: text
+
+  points:
+    type: text
+    initial_value: "0"
 
 responses:
   utter_greet:
@@ -45,4 +60,13 @@ responses:
   - text: "Metropolitan France's surface area is 551 550 square kilometres"
 
   utter_ask_type:
-  - text: "What type of trivia do you want to hear? General knowledge, books, geography or random one?"
+  -
+    buttons:
+      -
+        payload: "/choose{\"trivia_type\": \"General\"}"
+        title: General
+      -
+        payload: "/choose{\"trivia_type\": \"random\"}"
+        title: Random
+    text: "What type of trivia do you want to hear? General one or random one?"
+
