@@ -1,12 +1,27 @@
 ## Trivia path 1
 * greet
-    - utter_greet
-* affirm
-    - utter_ask_type
-* inform{"trivia_type": "random"}
     - give_trivia
+    - verify_answer
+* answer_correct
+    - answer_correct_react
 
-## Trivia path 1
+## Trivia path 2
+* greet
+    - give_trivia
+    - verify_answer
+* answer_incorrect
+    - answer_incorrect_react
+
+
+## story_goodbye
+* goodbye
+    - button_test
+
+## story_thankyou
+* thanks
+    - utter_noworries
+
+<!-- ## Trivia path 1
 * greet
     - utter_greet
 * affirm
@@ -44,4 +59,4 @@
 
 ## story_thankyou
 * thanks
-    - utter_noworries
+    - utter_noworries -->
