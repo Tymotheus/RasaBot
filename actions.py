@@ -35,7 +35,7 @@ class Give_Trivia(Action):
         return "give_trivia"
 
     def run(self, dispatcher, tracker, domain):
-        print(tracker.get_slot("trivia_type"))
+    
         #converting json format reply into python dictionary object
         request = json.loads(requests.get('https://opentdb.com/api.php?amount=1').text)
         print(request)
@@ -53,11 +53,16 @@ class Give_Trivia(Action):
 
         buttons = []
         for answ in all_answers:
+            #2 potential solutions: 1) intent \correct_asnwer and \incorrect_answer
+            # and reactions to them 2) answer with setting slots of user answer and then comparing it to correct one
+
             if answ == correct_answer:
-                intent = "answer_correct"
+                intent = '/answer_correct'
             else :
-                intent = "answer_incorrect"
-            print("Banana")
+                intent = '/answer_incorrect'
+
+            #intent = '/answer{"user_answer":"' + answ + '"}'
+
             buttons.append(
 
                 {"title": "{}".format(answ),
@@ -69,8 +74,6 @@ class Give_Trivia(Action):
         dispatcher.utter_message(trivia)
         dispatcher.utter_message(buttons = buttons)
         print(all_answers)
-        # dispatcher.utter_message(trivia)
-        # dispatcher.utter_message(correct_answer)
         return [SlotSet("correct_answer","{}".format(correct_answer))]
         #return []
 
@@ -111,6 +114,10 @@ class Verify_Answer(Action):
     def run(self, dispatcher, tracker, domain):
         print("Users last message was: {}".format(tracker.latest_message.get("text") ) )
         print("Correct answer is: {}".format(tracker.get_slot("correct_answer")))
+        if ( tracker.get_slot("correct_answer") == tracker.get_slot("user_answer") ):
+            print("Answer Correct! :)")
+        else:
+            print("Answer Incorrect :(")
         return[]
 
 class Button_Test(Action):
@@ -130,3 +137,4 @@ class Button_Test(Action):
 
         dispatcher.utter_button_template("utter_greet", buttons, tracker)
         return []
+
