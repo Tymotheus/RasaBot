@@ -35,7 +35,7 @@ class Give_Trivia(Action):
         return "give_trivia"
 
     def run(self, dispatcher, tracker, domain):
-    
+
         #converting json format reply into python dictionary object
         request = json.loads(requests.get('https://opentdb.com/api.php?amount=1').text)
         print(request)
@@ -77,7 +77,7 @@ class Give_Trivia(Action):
         return [SlotSet("correct_answer","{}".format(correct_answer))]
         #return []
 
-class Correct_Answer:
+class Answer_Correct_React(Action):
 
     def name(self):
         return "answer_correct_react"
@@ -87,7 +87,7 @@ class Correct_Answer:
         return []
 
 
-class Incorrect_Answer:
+class Answer_Incorrect_React(Action):
 
     def name(self):
         return "answer_incorrect_react"
@@ -137,4 +137,3 @@ class Button_Test(Action):
 
         dispatcher.utter_button_template("utter_greet", buttons, tracker)
         return []
-
