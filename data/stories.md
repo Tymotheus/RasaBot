@@ -1,3 +1,13 @@
+<!-- ## Trivia test
+* greet
+    - answer_correct_react
+    - action_listen
+
+## Again testers
+* goodbye
+    - answer_incorrect_react
+    - action_listen -->
+
 <!-- # Trivia path 0
 * greet
     - give_trivia
@@ -7,18 +17,20 @@
 * out_of_scope
     - utter_out_of_scope -->
 
+
+
+
 ## Trivia path 1
 * greet
     - give_trivia
+
+# Verifying answer incorrect
 * answer_correct
     - answer_correct_react
 
-## Trivia path 2
-* greet
-    - give_trivia
+# Verifying answer correct
 * answer_incorrect
     - answer_incorrect_react
-
 
 
 
@@ -71,4 +83,3 @@
 ## story_thankyou
 * thanks
     - utter_noworries -->
-
