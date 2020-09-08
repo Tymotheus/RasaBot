@@ -1,25 +1,36 @@
+<!-- # Trivia path 0
+* greet
+    - give_trivia
+* answer
+    - verify_answer
+
+* out_of_scope
+    - utter_out_of_scope -->
+
 ## Trivia path 1
 * greet
     - give_trivia
-    - verify_answer
 * answer_correct
     - answer_correct_react
 
 ## Trivia path 2
 * greet
     - give_trivia
-    - verify_answer
 * answer_incorrect
     - answer_incorrect_react
 
 
-## story_goodbye
+
+
+<!-- ## story_goodbye
 * goodbye
     - button_test
 
 ## story_thankyou
 * thanks
-    - utter_noworries
+    - utter_noworries -->
+
+
 
 <!-- ## Trivia path 1
 * greet
@@ -60,3 +71,4 @@
 ## story_thankyou
 * thanks
     - utter_noworries -->
+
